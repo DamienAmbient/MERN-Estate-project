@@ -2,6 +2,7 @@ import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./pages/About";
+import CreateListing from "./pages/CreateListing";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/Signin";
@@ -20,6 +21,10 @@ export default function App() {
                     <Route
                         path="/profile"
                         element={<Profile></Profile>}
+                    ></Route>
+                    <Route
+                        path="/create-listing"
+                        element={<CreateListing></CreateListing>}
                     ></Route>
                 </Route>
             </Routes>
