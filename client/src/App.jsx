@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/Signin";
 import SignUp from "./pages/SignUp";
+import Listing from "./pages/Listing";
 
 export default function App() {
     return (
@@ -18,6 +19,10 @@ export default function App() {
                 <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
+                <Route
+                    path="/listing/:listingId"
+                    element={<Listing></Listing>}
+                ></Route>
                 <Route element={<PrivateRoute></PrivateRoute>}>
                     <Route
                         path="/profile"
