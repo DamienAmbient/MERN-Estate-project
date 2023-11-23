@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     getDownloadURL,
     getStorage,
@@ -8,7 +8,6 @@ import {
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function CreateListing() {
     const { currentUser } = useSelector((state) => state.user);
@@ -45,10 +44,11 @@ export default function CreateListing() {
             }
             setFormData(data);
         };
-        fetchListing();
-    }, []);
 
-    const handleImageSubmit = () => {
+        fetchListing();
+    }, [params.listingId]);
+
+    const handleImageSubmit = (e) => {
         if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
             setUploading(true);
             setImageUploadError(false);
@@ -66,7 +66,7 @@ export default function CreateListing() {
                     setImageUploadError(false);
                     setUploading(false);
                 })
-                .catch(() => {
+                .catch((err) => {
                     setImageUploadError(
                         "Image upload failed (2 mb max per image)"
                     );
@@ -325,7 +325,6 @@ export default function CreateListing() {
                                 />
                                 <div className="flex flex-col items-center">
                                     <p>Discounted price</p>
-
                                     {formData.type === "rent" && (
                                         <span className="text-xs">
                                             ($ / month)
