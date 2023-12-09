@@ -1,8 +1,8 @@
 import express from "express";
 import {
     google,
-    signin,
     signOut,
+    signin,
     signup,
 } from "../controllers/auth.controller.js";
 
